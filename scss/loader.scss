@@ -1,0 +1,165 @@
+// 로더 전용 SCSS
+$color: #00168f; // 삼성 브랜드 컬러 사용
+
+// 기본 폰트 설정
+body {
+    font-family: 'Helvetica Now Display', 'Arial', 'Roboto', sans-serif;
+}
+
+// 로더 메인 컨테이너
+.loader {
+    --partials: 3;
+    --section-height: calc(100vh / var(--partials));
+
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+
+    // 로더 클립 섹션들
+    &__clip {
+        position: absolute;
+        width: 100vw;
+        height: var(--section-height);
+        overflow: clip;
+        z-index: 10000;
+    }
+
+    // 상단 클립
+    .clip-top {
+        top: 0;
+        -webkit-clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0);
+        background-color: $color; // 삼성 브랜드 컬러
+    }
+
+    // 하단 클립
+    .clip-bottom {
+        bottom: 0;
+        -webkit-clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0);
+        background-color: #000;
+    }
+
+    // 중앙 클립
+    .clip-center {
+        overflow: hidden;
+        position: relative;
+        width: 100vw;
+        height: var(--section-height);
+        top: var(--section-height);
+        z-index: 100;
+        background-color: #f7f7f7; // 삼성 사이트와 맞는 배경색
+    }
+
+    // 마키 텍스트 컨테이너
+    .marquee {
+        position: absolute;
+        top: 200%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200vw;
+        display: flex;
+        justify-content: center;
+        white-space: nowrap;
+        color: #fff;
+        mix-blend-mode: difference;
+        font-size: 16vw;
+
+        // 마키 내용물
+        &__container {
+            width: 100%;
+            padding-top: 0.2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: serif;
+            font-weight: 700; // 더 굵게
+
+            span {
+                margin-right: 2rem;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    // 중앙 섹션 텍스트는 검은색
+    .clip-center .marquee {
+        color: #000;
+        mix-blend-mode: normal; // 중앙은 blend mode 제거
+    }
+
+    // 컨테이너 스타일
+    .container {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        font-size: 14px;
+        background: #fff;
+    }
+}
+
+// 메인 컨텐츠 초기 상태 (로더가 있을 때 숨김)
+#wrap {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1s ease, transform 1s ease;
+
+    // 로더가 사라진 후 나타나는 상태
+    &.loaded {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// 반응형 처리
+@media (max-width: 768px) {
+    .loader {
+        .marquee {
+            font-size: 20vw; // 모바일에서 더 큰 텍스트
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .loader {
+        .marquee {
+            font-size: 24vw;
+
+            &__container {
+                span {
+                    margin-right: 1rem; // 모바일에서 간격 줄이기
+                }
+            }
+        }
+    }
+}
+
+// 로딩 애니메이션을 위한 클래스들 (JS에서 사용)
+.loader-exit {
+    .clip-top {
+        transform: translateY(-100%);
+        transition: transform 1s ease-in-out;
+    }
+
+    .clip-bottom {
+        transform: translateY(100%);
+        transition: transform 1s ease-in-out;
+    }
+
+    .clip-center {
+        transform: scale(0);
+        opacity: 0;
+        transition: all 0.8s ease-in-out 0.2s;
+    }
+}

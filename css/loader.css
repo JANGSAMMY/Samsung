@@ -1,0 +1,124 @@
+body {
+  font-family: "Helvetica Now Display", "Arial", "Roboto", sans-serif;
+}
+
+.loader {
+  --partials: 3;
+  --section-height: calc(100vh / var(--partials));
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+}
+.loader__clip {
+  position: absolute;
+  width: 100vw;
+  height: var(--section-height);
+  overflow: clip;
+  z-index: 10000;
+}
+.loader .clip-top {
+  top: 0;
+  -webkit-clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);
+  background-color: #00168f;
+}
+.loader .clip-bottom {
+  bottom: 0;
+  -webkit-clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);
+  background-color: #000;
+}
+.loader .clip-center {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: var(--section-height);
+  top: var(--section-height);
+  z-index: 100;
+  background-color: #f7f7f7;
+}
+.loader .marquee {
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200vw;
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-size: 16vw;
+}
+.loader .marquee__container {
+  width: 100%;
+  padding-top: 0.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: serif;
+  font-weight: 700;
+}
+.loader .marquee__container span {
+  margin-right: 2rem;
+  white-space: nowrap;
+}
+.loader .clip-center .marquee {
+  color: #000;
+  mix-blend-mode: normal;
+}
+.loader .container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 14px;
+  background: #fff;
+}
+
+#wrap {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1s ease, transform 1s ease;
+}
+#wrap.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .loader .marquee {
+    font-size: 20vw;
+  }
+}
+@media (max-width: 480px) {
+  .loader .marquee {
+    font-size: 24vw;
+  }
+  .loader .marquee__container span {
+    margin-right: 1rem;
+  }
+}
+.loader-exit .clip-top {
+  transform: translateY(-100%);
+  transition: transform 1s ease-in-out;
+}
+.loader-exit .clip-bottom {
+  transform: translateY(100%);
+  transition: transform 1s ease-in-out;
+}
+.loader-exit .clip-center {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.8s ease-in-out 0.2s;
+}
