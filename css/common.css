@@ -1,4 +1,5 @@
 #wrap {
+  overflow-x: hidden;
   width: 100%;
 }
 #wrap .inner {

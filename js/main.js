@@ -51,8 +51,7 @@ function setupScrollTrigger4() {
         trigger: con4,
         start: 'top top',
         end: () => `+=${maxScroll4}`,
-        pin: con4,
-        pinSpacing:true,
+        pin: true,
         scrub: true,
         anticipatePin: 1,
         onUpdate: (self) => {

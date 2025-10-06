@@ -1,4 +1,5 @@
 body {
+  overflow-x: hidden;
   font-family: "Helvetica Now Display", "Arial", "Roboto", sans-serif;
 }
 

@@ -2,6 +2,7 @@ $main-color: #002c5f;
 $font-color: #333;
 $hover-bg: #f1f1f1;
 #wrap {
+    overflow-x: hidden;
     width: 100%;
 
     .inner {
