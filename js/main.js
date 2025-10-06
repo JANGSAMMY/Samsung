@@ -55,6 +55,7 @@ function setupScrollTrigger4() {
         pinSpacing:true,
         scrub: true,
         anticipatePin: 1,
+        markers: false,
         onUpdate: (self) => {
             target4 = clamp4(maxScroll4 * self.progress, 0, maxScroll4);
 

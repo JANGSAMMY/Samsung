@@ -171,7 +171,7 @@ $color: #00168f;
                             transition: transform 0.3s ease;
                         }
 
-                      
+                        // 텍스트 오버레이
                         &::after {
                             content: attr(data-text);
                             position: absolute;
@@ -189,7 +189,7 @@ $color: #00168f;
                             pointer-events: none;
                         }
 
-                        
+                  
                         &:hover::after {
                             opacity: 1;
                             z-index: 10;
