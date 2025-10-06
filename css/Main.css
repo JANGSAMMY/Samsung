@@ -532,7 +532,7 @@
   margin: 150px 0;
 }
 .content4 .inner {
-  overflow: hidden;
+  overflow: none;
 }
 .content4 .bg-number4 {
   position: absolute;
