@@ -560,11 +560,11 @@
   position: relative;
   padding: 150px 0;
   box-sizing: border-box;
-  height: 500px;
 }
 .content4 .con4 .slider {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 .content4 .con4 .slider-wrapper {
   display: flex;

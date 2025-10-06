@@ -68,17 +68,11 @@ function setupScrollTrigger4() {
 }
 
 function init4() {
-    if (!con4 || !sliderWrapper4 || slides4.length === 0) {
-        console.error('con4 요소를 찾을 수 없습니다');
-        return;
-    }
-    
     totalSlides4 = slides4.length;
     activeSlideEl4.textContent = `1/${totalSlides4}`;
     setupScrollTrigger4();
     render4();
 }
-
 
 window.addEventListener('resize', () => {
     maxScroll4 = getMaxScroll4();
@@ -88,8 +82,4 @@ window.addEventListener('resize', () => {
     }
 });
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init4);
-} else {
-    init4();
-}
+init4();
