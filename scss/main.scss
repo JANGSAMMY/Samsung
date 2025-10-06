@@ -598,7 +598,7 @@ $color: #00168f;
         position: relative;
         padding: 150px 0;
         box-sizing: border-box;
-        height: 100vh;
+        height: 500px;
 
         .slider {
             width: 100%;
@@ -606,6 +606,7 @@ $color: #00168f;
         }
 
         .slider-wrapper {
+      
             display: flex;
             align-items: flex-start;
             gap: 100px;
